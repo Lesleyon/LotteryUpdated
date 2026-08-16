@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS draws (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
+    winning_numbers INTEGER[],
+    created_at TIMESTAMP NOT NULL,
+    completed_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tickets (
+    id BIGSERIAL PRIMARY KEY,
+    draw_id BIGINT NOT NULL REFERENCES draws(id) ON DELETE CASCADE,
+    numbers INTEGER[] NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'PENDING',
+    created_at TIMESTAMP NOT NULL
+);

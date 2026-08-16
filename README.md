@@ -38,3 +38,15 @@
 10.	Используем команду curl или curl.exe для выполнения команд
 11.	Для закрытия контейнера используем docker compose down
 
+Эндпоинты
+1.	POST http://localhost:8080/draws  - создание тиража
+2.	GET http://localhost:8080 /draws – просмотр тиражей
+3.	POST http://localhost:8080  /draws/{id}/tickets – добавление билета в тираж
+4.	 POST http://localhost:8080 /draws/{id}/complete – завершение тиража
+5.	GET http://localhost:8080 /tickets/{id} – просмотр билета
+{id} – id объекта к которому обращаемся.
+Пример создания билета:
+curl.exe -X POST http://localhost:8080/draws/9/tickets -H "Content-Type: application/json" -d "{""numbers"":[1,2,3,4,5,6]}"
+В билете должно быть ровно шесть чисел, а сами числа обязательно должны быть от одного до сорока пяти
+
+
